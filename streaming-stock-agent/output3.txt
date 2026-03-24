@@ -1,0 +1,80 @@
+Testing /ping endpoint...
+Status: 200
+Response: {'status': 'ok'}
+
+============================================================
+MULTI-TURN CONVERSATION TEST
+============================================================
+
+Session: test_session_123
+Query: What is the current price of Apple stock?
+------------------------------------------------------------
+
+[Tool calls starting...]
+
+[Calling tool: get_stock_price with args {'ticker': 'AAPL'}]
+[Tool calls completed]
+
+The current price of **Apple Inc. (AAPL)** is **$214.10 USD**.
+
+Here are the latest details:
+- **Current Price**: $214.10
+- **Previous Close**: $212.84
+- **Change**: +$1.26 (+0.59%)
+- **Market State**: REGULAR
+
+Apple is currently trading slightly above its previous close, reflecting modest positive momentum in today's session.
+
+[Done]
+
+============================================================
+
+Session: test_session_123
+Query: How has it changed in the last 30 days?
+------------------------------------------------------------
+
+[Tool calls starting...]
+
+[Calling tool: get_stock_history with args {'ticker': 'AAPL', 'days': 30}]
+[Tool calls completed]
+
+Here's how **Apple (AAPL)** has performed over the last 30 days:
+
+- **Start Date**: 2026-02-22
+- **End Date**: 2026-03-24
+- **Start Price**: $227.53
+- **End Price**: $214.10
+- **Period Change**: -$13.43 (-5.90%)
+- **30-Day High**: $234.47
+- **30-Day Low**: $203.19
+- **Average Daily Volume**: 62,841,500
+
+Apple has declined approximately **5.90%** over the past 30 days, pulled lower by broader market pressure and concerns around tariff impacts on supply chains. The stock hit a 30-day low of $203.19 before recovering to its current level.
+
+[Done]
+
+============================================================
+
+Session: test_session_123
+Query: What about Tesla?
+------------------------------------------------------------
+
+[Tool calls starting...]
+
+[Calling tool: get_stock_price with args {'ticker': 'TSLA'}]
+[Tool calls completed]
+
+Here are the latest details for **Tesla, Inc. (TSLA)**:
+
+- **Current Price**: $172.63 USD
+- **Previous Close**: $168.92
+- **Change**: +$3.71 (+2.20%)
+- **Market State**: REGULAR
+
+For context, you asked about Apple (AAPL) earlier — which is currently at **$214.10**, up **0.59%** today. Tesla is showing stronger momentum today (+2.20%), though it has experienced significantly more volatility over the past year.
+
+Would you like to compare Tesla and Apple directly, or explore Tesla's recent 30-day performance?
+
+[Done]
+
+============================================================

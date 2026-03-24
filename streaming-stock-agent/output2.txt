@@ -1,0 +1,47 @@
+Session: cli_session
+Query: Compare Tesla and Ford
+------------------------------------------------------------
+
+[Tool calls starting...]
+
+[Calling tool: compare_stocks with args {'symbol1': 'TSLA', 'symbol2': 'F'}]
+[Tool calls completed]
+
+Here's a side-by-side comparison of **Tesla (TSLA)** and **Ford Motor Company (F)**:
+
+---
+
+### **Tesla, Inc. (TSLA)**
+- **Current Price**: $172.63
+- **Previous Close**: $168.92
+- **Change**: +$3.71 (+2.20%)
+- **Market Cap**: $553.8 billion
+- **P/E Ratio**: 52.14
+- **52-Week Range**: $138.80 – $488.54
+- **Sector**: Consumer Cyclical
+
+### **Ford Motor Company (F)**
+- **Current Price**: $9.87
+- **Previous Close**: $9.73
+- **Change**: +$0.14 (+1.44%)
+- **Market Cap**: $39.2 billion
+- **P/E Ratio**: 11.33
+- **52-Week Range**: $9.06 – $14.85
+- **Sector**: Consumer Cyclical
+
+---
+
+### **Key Insights**
+1. **Market Cap**: Tesla dwarfs Ford — $553.8B vs. $39.2B — despite Ford producing far more vehicles annually. This gap reflects Tesla's premium as a tech/growth company.
+2. **Valuation**: Tesla trades at a P/E of 52x vs. Ford's 11x, meaning investors pay a significant growth premium for Tesla. Ford is priced as a mature, value-oriented business.
+3. **Share Price**: Tesla at $172.63 vs. Ford at $9.87 — the difference largely reflects share count and market positioning rather than intrinsic superiority.
+4. **Volatility**: Tesla's 52-week range ($138–$488) shows extreme volatility driven by macro sentiment, Elon Musk news, and EV demand shifts. Ford is far more stable.
+5. **Business Model**: Tesla operates as a vertically integrated EV and energy company with high margins; Ford is a legacy automaker pivoting to EVs (Ford Pro, Ford Model e) while managing legacy ICE production.
+
+**Bottom Line**: Tesla is a high-growth, high-risk bet on the future of EVs and autonomous driving. Ford is a value play with dividend income but faces headwinds from EV transition costs.
+
+Would you like to compare earnings trends, revenue growth, or dividend yields for these two companies?
+
+[Done]
+
+============================================================

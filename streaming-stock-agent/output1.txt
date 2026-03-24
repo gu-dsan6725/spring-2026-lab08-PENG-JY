@@ -1,0 +1,45 @@
+Session: cli_session
+Query: Compare AAPL and MSFT
+------------------------------------------------------------
+
+[Tool calls starting...]
+
+[Calling tool: compare_stocks with args {'symbol1': 'AAPL', 'symbol2': 'MSFT'}]
+[Tool calls completed]
+
+Here's a side-by-side comparison of **Apple (AAPL)** and **Microsoft (MSFT)** based on the latest market data:
+
+---
+
+### **Apple Inc. (AAPL)**
+- **Current Price**: $214.10
+- **Previous Close**: $212.84
+- **Change**: +$1.26 (+0.59%)
+- **Market Cap**: $3.21 trillion
+- **P/E Ratio**: 33.47
+- **52-Week Range**: $164.08 – $260.10
+- **Sector**: Technology
+
+### **Microsoft Corporation (MSFT)**
+- **Current Price**: $388.45
+- **Previous Close**: $385.27
+- **Change**: +$3.18 (+0.83%)
+- **Market Cap**: $2.89 trillion
+- **P/E Ratio**: 34.12
+- **52-Week Range**: $344.79 – $468.35
+- **Sector**: Technology
+
+---
+
+### **Key Insights**
+1. **Market Cap**: Apple leads with a $3.21T market cap vs. Microsoft's $2.89T.
+2. **Share Price**: Microsoft's price per share ($388.45) is significantly higher than Apple's ($214.10), though this reflects share structure, not total value.
+3. **Valuation (P/E)**: Both companies trade at similar valuations (~33–34x earnings), indicating the market prices their growth prospects similarly.
+4. **52-Week Performance**: Apple has pulled back more from its yearly high, while Microsoft remains closer to its high.
+5. **Business Focus**: Apple relies on hardware ecosystems (iPhone, Mac, iPad), while Microsoft dominates enterprise software and cloud computing (Azure, Office 365).
+
+Would you like a deeper dive into either stock's financials, dividend history, or recent earnings?
+
+[Done]
+
+============================================================

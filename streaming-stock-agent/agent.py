@@ -179,6 +179,71 @@ def _get_company_info(
         }
 
 
+def _format_market_cap(market_cap: int | None) -> str | None:
+    """Format market cap as a human-readable string (e.g., '2.8T', '500B')."""
+    if market_cap is None:
+        return None
+    if market_cap >= 1e12:
+        return f"{market_cap / 1e12:.1f}T"
+    if market_cap >= 1e9:
+        return f"{market_cap / 1e9:.1f}B"
+    if market_cap >= 1e6:
+        return f"{market_cap / 1e6:.1f}M"
+    return str(market_cap)
+
+
+def _compare_stocks(
+    symbol1: str,
+    symbol2: str
+) -> Dict[str, Any]:
+    """Compare two stocks side-by-side.
+
+    Args:
+        symbol1: First stock symbol (e.g., 'AAPL')
+        symbol2: Second stock symbol (e.g., 'MSFT')
+
+    Returns:
+        Dictionary with comparison data for both stocks
+    """
+    try:
+        def _fetch_stock_data(ticker: str) -> Dict[str, Any]:
+            stock = yf.Ticker(ticker.upper())
+            info = stock.info
+            current_price = info.get('currentPrice') or info.get('regularMarketPrice')
+            return {
+                "symbol": ticker.upper(),
+                "company_name": info.get('longName', ticker.upper()),
+                "current_price": round(current_price, 2) if current_price is not None else None,
+                "previous_close": round(info['previousClose'], 2) if info.get('previousClose') else None,
+                "change_percent": round(
+                    (current_price - info['previousClose']) / info['previousClose'] * 100, 2
+                ) if current_price and info.get('previousClose') else None,
+                "market_cap": _format_market_cap(info.get('marketCap')),
+                "pe_ratio": round(info['trailingPE'], 2) if info.get('trailingPE') else None,
+                "52_week_high": info.get('fiftyTwoWeekHigh'),
+                "52_week_low": info.get('fiftyTwoWeekLow'),
+                "sector": info.get('sector'),
+                "currency": info.get('currency', 'USD'),
+            }
+
+        stock1 = _fetch_stock_data(symbol1)
+        stock2 = _fetch_stock_data(symbol2)
+
+        return {
+            "comparison": {
+                "symbol1": symbol1.upper(),
+                "symbol2": symbol2.upper(),
+                "stock1": stock1,
+                "stock2": stock2,
+                "timestamp": datetime.now().isoformat()
+            }
+        }
+
+    except Exception as e:
+        logger.error(f"Error comparing stocks {symbol1} and {symbol2}: {e}")
+        return {"error": str(e), "symbol1": symbol1.upper(), "symbol2": symbol2.upper()}
+
+
 # Tool definitions for Strands agent
 STOCK_TOOLS = [
     {
@@ -230,6 +295,25 @@ STOCK_TOOLS = [
             "required": ["ticker"]
         },
         "function": _get_company_info
+    },
+    {
+        "name": "compare_stocks",
+        "description": "Compare two stocks side-by-side, showing current price, market cap, P/E ratio, 52-week range, and sector. Use this when the user wants to compare two stocks, asks 'which is better', or wants a head-to-head comparison.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "symbol1": {
+                    "type": "string",
+                    "description": "First stock ticker symbol to compare (e.g., AAPL, TSLA, MSFT)"
+                },
+                "symbol2": {
+                    "type": "string",
+                    "description": "Second stock ticker symbol to compare (e.g., MSFT, F, GOOGL)"
+                }
+            },
+            "required": ["symbol1", "symbol2"]
+        },
+        "function": _compare_stocks
     }
 ]
 
